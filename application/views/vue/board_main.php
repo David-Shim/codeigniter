@@ -62,7 +62,7 @@
 </script>
 <script>
 var get_url = window.location.href;
-var last_url_value = get_url.split("/").pop();
+var last_url_value = Number(get_url.split("/").pop());
 var axiosDataLoadLink = 'http://localhost/codeigniter/mement/board_data/'+last_url_value;
 var aixosContentInputLink = "http://localhost/codeigniter/mement/comment/"+last_url_value;
 Vue.component('modal', {

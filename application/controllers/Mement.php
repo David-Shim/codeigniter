@@ -70,6 +70,7 @@ class Mement extends CI_Controller {
         $this->load->model("board_model");
         
         $this->load->view('vue/board_main');
+        $this->load->view('vue/pagination');
         
         $this->load->view('templates/footer');
     }
