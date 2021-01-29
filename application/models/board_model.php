@@ -9,7 +9,8 @@ class board_model extends CI_Model {
     function get_data($page_number){
         $page_number = ($page_number-1)*10;
         $query = $this->db->query("SELECT * FROM notice_board ORDER BY notice_id DESC LIMIT ".$page_number.", 10");
-        return $query->result_array();
+        $return_data['contents'] =$query->result_array();
+        return $return_data;
     }
 
     function pagination($page_number){

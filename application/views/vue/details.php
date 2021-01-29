@@ -89,6 +89,7 @@ new Vue({
             //console.log(this.notice_id);
             axios.get(replySubmitLink,{
                 params:{
+                    notice_id: this.notice_id,
                     replyContent: this.contentReply
                 }
             })

@@ -117,14 +117,11 @@ class Mement extends CI_Controller {
         
         $user_id = $this->session->userdata('user_id');
         $user_full_name = $this->session->userdata('last_name')." ".$this->session->userdata('first_name');
-        $content_title = trim($this->input->post('comment_title'));
-        $content = trim($this->input->post('comment'));
+        $content_title = trim($this->input->get('comment_title'));
+        $content = trim($this->input->get('comment'));
         $db_table = 'notice_board';
         $this->load->model("board_model");
         $upload_content = $this->board_model->upload_content($user_id,$user_full_name,$content_title,$content,$db_table);
-
-        //정보 입력 후 시나리오 작성
-        redirect('http://localhost/codeigniter/mement/board/1');
     }
 
     public function content_reply(){
@@ -188,10 +185,11 @@ class Mement extends CI_Controller {
             exit;
         }
         
+        $content_number = trim($this->input->get('notice_id')); 
         $reply_content = trim($this->input->get('replyContent'));
         //$first_name = $this->session->userdata('first_name');
         //$this->load->model("board_model");
-        echo $reply_content;
+        echo $content_number;
     }
 
     function logout(){
