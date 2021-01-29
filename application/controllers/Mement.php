@@ -214,16 +214,5 @@ class Mement extends CI_Controller {
         echo "<br>";
         echo $this->input->get('mama');
     }
-
-    public function test1($id){
-        $this->load->library('session');
-        if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
-            exit;
-        }
-        $this->load->model('board_model');
-        $upload_re_reply = $this->board_model->get_replies($id);
-        echo json_encode($upload_re_reply);
-    }
 }
 ?>
