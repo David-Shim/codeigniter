@@ -192,9 +192,6 @@ class Mement extends CI_Controller {
         //$first_name = $this->session->userdata('first_name');
         //$this->load->model("board_model");
         echo $reply_content;
-        
-        
-
     }
 
     function logout(){
