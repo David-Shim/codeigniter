@@ -32,7 +32,7 @@
             
             <!-- login_modal body -->
             <div class="modal-body">
-                <form method="post" action="http://localhost/codeigniter/mement/login">
+                <form method="post" action="http://http://pyoungsub.devleaguer.com//codeigniter/mement/login">
                     <div class="form-group">
                        <label for="user_email"><i class="far fa-envelope fa-fw"></i> 이메일 주소</label> <input type="email" class="form-control" id="user_email" name="user_email" required>
                     </div>

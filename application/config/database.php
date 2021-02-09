@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'http://pyoungsub.devleaguer.com/',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'my_db',

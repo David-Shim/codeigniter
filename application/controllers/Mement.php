@@ -25,7 +25,7 @@ class Mement extends CI_Controller {
         //등록된 이메일주소가 있는지
         $find_user_account = $this->login_model->find_user_account($user_email);
         if($find_user_account==0){
-            redirect('http://localhost/codeigniter/mement/signin');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement/signin');
         }
 
         //이메일이 있으면 비밀번호가 맞는지
@@ -43,7 +43,7 @@ class Mement extends CI_Controller {
             );
             $this->load->library('session');
             $this->session->set_userdata($user);
-            redirect('http://localhost/codeigniter/mement/board/1');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement/board/1');
         }else{
             //비밀번호가 일치하지 않을 때
             $this->load->view('templates/header');
@@ -62,7 +62,7 @@ class Mement extends CI_Controller {
         //세션 없으면 메인페이지로 redirect
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
             exit;
         }
         $this->load->view('templates/header');
@@ -79,7 +79,7 @@ class Mement extends CI_Controller {
     public function board_data($id){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
             exit;
         }
         $this->load->model("board_model");
@@ -91,7 +91,7 @@ class Mement extends CI_Controller {
         //잘못된 접속일 경우에 리다이렉트
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
             exit;
         }
         //로그인 후 헤더랑 나브바
@@ -107,7 +107,7 @@ class Mement extends CI_Controller {
     public function comment(){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
             exit;
         }
         
@@ -123,7 +123,7 @@ class Mement extends CI_Controller {
     public function re_reply(){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
             exit;
         }
         
@@ -142,7 +142,7 @@ class Mement extends CI_Controller {
     public function api($id){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
             exit;
         }
         $this->load->model("board_model");
@@ -153,7 +153,7 @@ class Mement extends CI_Controller {
     public function inputReply(){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
+            redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
             exit;
         }
 
@@ -170,7 +170,7 @@ class Mement extends CI_Controller {
 
     function logout(){
         $this->session->sess_destroy();
-        redirect('http://localhost/codeigniter/mement');
+        redirect('http://http://pyoungsub.devleaguer.com//codeigniter/mement');
     }
 
     //나중에 한번씩 볼 페이지들

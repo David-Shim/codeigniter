@@ -17,7 +17,7 @@
 		</thead>
 		<tbody>
 			<?php foreach ($get_data as $row) : ?>
-			<tr class="clickable-row" data-href="http://localhost/codeigniter/mement/details/<?php echo $row['notice_id']?>">
+			<tr class="clickable-row" data-href="http://http://pyoungsub.devleaguer.com//codeigniter/mement/details/<?php echo $row['notice_id']?>">
 				<td><?php echo $row['notice_id']?></td>
 				<td><?php echo $row['user_full_name']?></td>
 				<td><?php echo $row['notice_title']?></td>
@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
             <button type="button" class="close" data-dismiss="modal">×</button>
             </div>
 
-			<form method="post" action="http://localhost/codeigniter/mement/comment">
+			<form method="post" action="http://http://pyoungsub.devleaguer.com//codeigniter/mement/comment">
             <!-- write_modal body -->
             <div class="modal-body">
 				<div class="form-group">

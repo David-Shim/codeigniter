@@ -1,4 +1,4 @@
-<form method="post" action="http://localhost/codeigniter/mement/content_reply">
+<form method="post" action="http://http://pyoungsub.devleaguer.com//codeigniter/mement/content_reply">
     <div class="container">
         <div class="row">
             <div class="col">
