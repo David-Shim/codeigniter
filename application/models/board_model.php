@@ -53,6 +53,8 @@ class board_model extends CI_Model {
             'reg_date'=>$now
         );
         $this->db->insert('reply',$data);
+        $query = $this->db->query("SELECT * FROM reply WHERE reply_id = LAST_INSERT_ID()");
+        return $query->result_array();
     }
 
     function upload_re_reply($notice_id, $reply_id, $user_id, $first_name, $content,$reg_date){

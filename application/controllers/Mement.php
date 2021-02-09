@@ -94,17 +94,12 @@ class Mement extends CI_Controller {
             redirect('http://localhost/codeigniter/mement');
             exit;
         }
-
         //로그인 후 헤더랑 나브바
         $this->load->view('templates/header');
         $this->load->view('nav_bar_after_login');
-
         //db 데이터 가지고 오는 쿼리값 저장한 모델
         $this->load->model('board_model');
-
         $this->load->view("vue/details");
-
-
         //푸터
         $this->load->view('templates/footer');
     }
@@ -123,30 +118,6 @@ class Mement extends CI_Controller {
         $db_table = 'notice_board';
         $this->load->model("board_model");
         $upload_content = $this->board_model->upload_content($user_id,$user_full_name,$content_title,$content,$db_table);
-    }
-
-    public function content_reply(){
-        $this->load->library('session');
-        if(!$this->session->userdata('user_id')){
-            redirect('http://localhost/codeigniter/mement');
-            exit;
-        }
-
-        $notice_id = trim($this->input->post('notice_id'));
-        $user_id = $this->session->userdata('user_id');
-        $first_name = $this->session->userdata('first_name');
-        $reply_content = trim($this->input->post('reply_content'));
-        echo $notice_id;
-        echo "<br>";
-        echo $user_id;
-        echo "<br>";
-        echo $first_name;
-        echo "<br>";
-        echo $reply_content;
-        $this->load->model("board_model");
-        $upload_reply = $this->board_model->upload_reply($notice_id,$user_id,$first_name,$reply_content);
-
-        redirect('http://localhost/codeigniter/mement/details/'.$notice_id);
     }
 
     public function re_reply(){
@@ -179,18 +150,22 @@ class Mement extends CI_Controller {
         echo json_encode($details);
     }
 
-    public function inputReply($id){
+    public function inputReply(){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
             redirect('http://localhost/codeigniter/mement');
             exit;
         }
-        
-        $content_number = trim($this->input->get('notice_id')); 
+
+        $notice_id = trim($this->input->get('notice_id')); 
+        $user_id = $this->session->userdata('user_id');
+        $first_name = $this->session->userdata('first_name');
         $reply_content = trim($this->input->get('replyContent'));
-        //$first_name = $this->session->userdata('first_name');
-        //$this->load->model("board_model");
-        echo $content_number;
+
+        $this->load->model("board_model");
+
+        $upload_reply = $this->board_model->upload_reply($notice_id, $user_id, $first_name, $reply_content);
+        echo json_encode($upload_reply);
     }
 
     function logout(){
@@ -204,11 +179,20 @@ class Mement extends CI_Controller {
     }
     //parameter 값으로 데이터 처리
     public function test(){
+        $a = "aB1234!";
+        $k = password_hash($a, PASSWORD_BCRYPT, ['cost'=>12]);
+        echo $k;
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        /*
         echo $this->input->get('parameter1');
         echo "<br>";
         echo $this->input->get('parameter2');
         echo "<br>";
         echo $this->input->get('mama');
+        */
     }
 }
 ?>
