@@ -42,7 +42,7 @@
     function submit_re_reply(reply_id){
         var details_page= "<?php echo $details[0]['notice_id']?>";
         var re_reply_content = $(`#_<?php echo $details[0]['notice_id']?>${reply_id}`).val();
-        $.post("http://http://pyoungsub.devleaguer.com//codeigniter/mement/re_reply",{
+        $.post("http://pyoungsub.devleaguer.com///codeigniter/mement/re_reply",{
             notice_id: details_page,
             reply_id: reply_id,
             content: re_reply_content
