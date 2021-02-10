@@ -104,7 +104,7 @@ class CI_Config {
 			}
 			else
 			{
-				$base_url = 'http://pyoungsub.devleaguer.com///';
+				$base_url = 'http://pyoungsub.devleaguer.com/';
 			}
 
 			$this->set_item('base_url', $base_url);

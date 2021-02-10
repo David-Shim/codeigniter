@@ -63,8 +63,8 @@
 <script>
 var get_url = window.location.href;
 var last_url_value = Number(get_url.split("/").pop());
-var axiosDataLoadLink = 'http://pyoungsub.devleaguer.com///codeigniter/mement/board_data/'+last_url_value;
-var aixosContentInputLink = "http://pyoungsub.devleaguer.com///codeigniter/mement/comment/"+last_url_value;
+var axiosDataLoadLink = 'http://pyoungsub.devleaguer.com/codeigniter/mement/board_data/'+last_url_value;
+var aixosContentInputLink = "http://pyoungsub.devleaguer.com/codeigniter/mement/comment/"+last_url_value;
 Vue.component('modal', {
   template: '#modal-template'
 })
