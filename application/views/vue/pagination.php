@@ -1,4 +1,3 @@
-<div class="container">
 <ul id="pagination" class="pagination justify-content-center">
     <li class="page-item"><a class="page-link" v-on:click="linkTo(pre_page)">Previous</a></li>
     <li v-for="item in page_numbers" class="page-item" :class="{'active' : item.i == representNumber}">
@@ -8,7 +7,6 @@
     </li>
     <li class="page-item"><a class="page-link" v-on:click="linkTo(next_page)">Next</a></li>
 </ul>
-</div>
 <script>
 var pagination = new Vue({
     el:'#pagination',
@@ -30,7 +28,12 @@ var pagination = new Vue({
     },
     methods:{
         linkTo(page_number){
-            location.href='/codeigniter/mement/board/'+page_number;
+            if(page_number<1){
+                location.href='/codeigniter/mement/board/1';
+            }else{
+                location.href='/codeigniter/mement/board/'+page_number;
+            }
+            
         }
     }
 })

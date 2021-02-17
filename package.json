@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/David-Shim/mement#readme",
   "dependencies": {
-    "socket.io": "^3.1.0"
+    "express": "^4.17.1",
+    "socket.io": "^3.1.1"
   }
 }

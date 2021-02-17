@@ -11,7 +11,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" type="button"><i class="fas fa-sign-in-alt fa-fw"></i> 회원정보</a>
-                    <a class="dropdown-item" type="button" href="http://pyoungsub.devleaguer.com/codeigniter/mement/logout"><i class="fas fa-user-plus fa-fw"></i> 로그아웃</a>
+                    <a class="dropdown-item" type="button" href="http://localhost/codeigniter/mement/logout"><i class="fas fa-user-plus fa-fw"></i> 로그아웃</a>
                 </div>
             </div>
         </ul>

@@ -88,5 +88,10 @@ class board_model extends CI_Model {
         $query = $this->db->query("SELECT * FROM re_reply WHERE notice_id =".$notice_id);
         return $query->result_array();
     }
+
+    function get_branch_list(){
+        $query = $this->db->query("SELECT * FROM branch");
+        return $query->result_array();
+    }
 }
 ?>

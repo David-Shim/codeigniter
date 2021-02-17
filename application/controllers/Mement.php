@@ -11,7 +11,7 @@ class Mement extends CI_Controller {
     }
 
     public function index(){
-        $this->load->model("mement_model");
+        //$this->load->model("mement_model");
         $this->load->view('templates/header');
         $this->load->view('nav_bar_before_login');
         $this->load->view('index');
@@ -25,7 +25,7 @@ class Mement extends CI_Controller {
         //등록된 이메일주소가 있는지
         $find_user_account = $this->login_model->find_user_account($user_email);
         if($find_user_account==0){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement/signin');
+            redirect('http://localhost/codeigniter/mement/signin');
         }
 
         //이메일이 있으면 비밀번호가 맞는지
@@ -43,7 +43,7 @@ class Mement extends CI_Controller {
             );
             $this->load->library('session');
             $this->session->set_userdata($user);
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement/board/1');
+            redirect('http://localhost/codeigniter/mement/board/1');
         }else{
             //비밀번호가 일치하지 않을 때
             $this->load->view('templates/header');
@@ -62,24 +62,38 @@ class Mement extends CI_Controller {
         //세션 없으면 메인페이지로 redirect
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+            redirect('http://localhost/codeigniter/mement');
             exit;
         }
+        $this->load->model("board_model");
+
         $this->load->view('templates/header');
         $this->load->view('nav_bar_after_login');
-        $this->load->model("board_model");
-        
+
+        $this->load->view('templates/div_row');
+
+        $this->load->view('templates/col-lg-3');
+        $this->load->view('vue/left_side_bar');
+        $this->load->view('templates/div_close');
+
+        $this->load->view('templates/col-lg-6');
         $this->load->view('vue/board_main');
         $this->load->view('vue/pagination');
-        
-        $this->load->view('templates/footer');
+        $this->load->view('templates/div_close');
+
+        $this->load->view('templates/col-lg-3');
+        $this->load->view('vue/right_side_bar');
+        $this->load->view('templates/div_close');
+
+        $this->load->view('templates/div_close');
+        $this->load->view('vue/chat');
     }
     //board페이지에서 board_data페이지 안거치고 바로 자료 가지고 올 수 있음
 
     public function board_data($id){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+            redirect('http://localhost/codeigniter/mement');
             exit;
         }
         $this->load->model("board_model");
@@ -91,7 +105,7 @@ class Mement extends CI_Controller {
         //잘못된 접속일 경우에 리다이렉트
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+            redirect('http://localhost/codeigniter/mement');
             exit;
         }
         //로그인 후 헤더랑 나브바
@@ -107,7 +121,7 @@ class Mement extends CI_Controller {
     public function comment(){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+            redirect('http://localhost/codeigniter/mement');
             exit;
         }
         
@@ -123,7 +137,7 @@ class Mement extends CI_Controller {
     public function re_reply(){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+            redirect('http://localhost/codeigniter/mement');
             exit;
         }
         
@@ -142,7 +156,7 @@ class Mement extends CI_Controller {
     public function api($id){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+            redirect('http://localhost/codeigniter/mement');
             exit;
         }
         $this->load->model("board_model");
@@ -153,7 +167,7 @@ class Mement extends CI_Controller {
     public function inputReply(){
         $this->load->library('session');
         if(!$this->session->userdata('user_id')){
-            redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+            redirect('http://localhost/codeigniter/mement');
             exit;
         }
 
@@ -170,29 +184,27 @@ class Mement extends CI_Controller {
 
     function logout(){
         $this->session->sess_destroy();
-        redirect('http://pyoungsub.devleaguer.com/codeigniter/mement');
+        redirect('http://localhost/codeigniter/mement');
     }
 
-    //나중에 한번씩 볼 페이지들
-    public function vue_ex(){
-        $this->load->view('vue/vue_ex');
+    public function branch_list(){
+        $this->load->library('session');
+        if(!$this->session->userdata('user_id')){
+            redirect('http://localhost/codeigniter/mement');
+            exit;
+        }
+        $this->load->model("board_model");
+        $branch_list = $this->board_model->get_branch_list();
+        echo json_encode($branch_list);
     }
-    //parameter 값으로 데이터 처리
-    public function test(){
-        $a = "aB1234!";
-        $k = password_hash($a, PASSWORD_BCRYPT, ['cost'=>12]);
-        echo $k;
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        /*
-        echo $this->input->get('parameter1');
-        echo "<br>";
-        echo $this->input->get('parameter2');
-        echo "<br>";
-        echo $this->input->get('mama');
-        */
+
+    public function user_config(){
+        $user_info['user_id'] = $this->session->userdata('user_id');
+        $first_name = $this->session->userdata('first_name');
+        $last_name = $this->session->userdata('last_name');
+        $user_full_name = $last_name." ".$first_name;
+        $user_info['username'] = $user_full_name;
+        echo json_encode($user_info);
     }
 }
 ?>

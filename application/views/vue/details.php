@@ -40,8 +40,8 @@
 <script>
 var get_url = window.location.href;
 var last_url_value = get_url.split("/").pop();
-var axiosDataLoadLink = 'http://pyoungsub.devleaguer.com/codeigniter/mement/api/'+last_url_value;
-var replySubmitLink =   'http://pyoungsub.devleaguer.com/codeigniter/mement/inputReply';
+var axiosDataLoadLink = 'http://localhost/codeigniter/mement/api/'+last_url_value;
+var replySubmitLink =   'http://localhost/codeigniter/mement/inputReply';
 
 new Vue({
     el: '#app',

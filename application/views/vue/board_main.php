@@ -1,34 +1,35 @@
 <div class="container" id="board">
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-        </tr>
-    </thead>
-    <!--{{datum.notice_id}}가 아니고 바로 datum.notice_id로 가지고 왔음-->
-    <tbody id="content">
-        <tr v-for="datum in contents"  v-on:click="details(datum.notice_id)">
-            <td>{{datum.notice_id}}</td>
-            <td>{{datum.notice_title}}</td>
-            <td>{{datum.user_full_name}}</td>
-        </tr>
-    </tbody>
-</table>
-<button class="btn btn-info" type="button" id="show-modal" @click="showModal = true">글쓰기</button>
-<modal v-if="showModal" @close="showModal = false">
-    <h3 slot="header" class="text-info">MEMENT에 글 올리기</h3>
-    <div slot="body">
-        <input class="form-control" type="text" placeholder="제목을 입력하세요" ref="comment_title" v-model="comment_title">
-        <textarea class="form-control" rows="10" placeholder="자유롭게 작성해 보세요" ref="comment" v-model="comment" required></textarea>
-    </div>
-    <div slot="footer">
-        <button class="btn btn-info modal-default-button" @click="submit_content">
-            저장하기
-        </button>
-    </div>
-</modal>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+            </tr>
+        </thead>
+        <!--{{datum.notice_id}}가 아니고 바로 datum.notice_id로 가지고 왔음-->
+        <tbody id="content">
+            <tr v-for="datum in contents"  v-on:click="details(datum.notice_id)">
+                <td>{{datum.notice_id}}</td>
+                <td>{{datum.notice_title}}</td>
+                <td>{{datum.user_full_name}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-info" type="button" id="show-modal" @click="showModal = true">글쓰기</button>
+    <!-- 글쓰기 버튼 클릭시 나오는 모달-->
+    <modal v-if="showModal" @close="showModal = false">
+        <h3 slot="header" class="text-info">MEMENT에 글 올리기</h3>
+        <div slot="body">
+            <input class="form-control" type="text" placeholder="제목을 입력하세요" ref="comment_title" v-model="comment_title">
+            <textarea class="form-control" rows="10" placeholder="자유롭게 작성해 보세요" ref="comment" v-model="comment" required></textarea>
+        </div>
+        <div slot="footer">
+            <button class="btn btn-info modal-default-button" @click="submit_content">
+                저장하기
+            </button>
+        </div>
+    </modal>
 </div>
 
 
@@ -63,8 +64,8 @@
 <script>
 var get_url = window.location.href;
 var last_url_value = Number(get_url.split("/").pop());
-var axiosDataLoadLink = 'http://pyoungsub.devleaguer.com/codeigniter/mement/board_data/'+last_url_value;
-var aixosContentInputLink = "http://pyoungsub.devleaguer.com/codeigniter/mement/comment/"+last_url_value;
+var axiosDataLoadLink = 'http://localhost/codeigniter/mement/board_data/'+last_url_value;
+var aixosContentInputLink = "http://localhost/codeigniter/mement/comment/"+last_url_value;
 Vue.component('modal', {
   template: '#modal-template'
 })
